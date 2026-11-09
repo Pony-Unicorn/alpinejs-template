@@ -14,3 +14,4 @@
   - https://astro.build/integrations/
 - 封装 toast 组件 https://awesomealpine.com/docs/toasts/2-configuration/toast-options/
 - 添加排版 https://github.com/tailwindlabs/tailwindcss-typography#readme
+- 添加 wrangler 的配置

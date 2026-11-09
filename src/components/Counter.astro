@@ -1,34 +1,52 @@
 ---
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
-
 interface Props {
-	initialCount?: number;
+  initialCount?: number
 }
 
-const { initialCount = 0 } = Astro.props;
+const { initialCount = 0 } = Astro.props
 ---
 
-<div class="counter" x-data={`{ count: ${initialCount} }`}>
-	<button x-on:click="count--">-</button>
-	<pre x-text="count">{ initialCount }</pre>
-	<button x-on:click="count++">+</button>
+<div class="stats shadow" x-data={`{ count: ${initialCount} }`}>
+  <div class="stat">
+    <button x-on:click="count--">-</button>
+    <pre class="stat-value" x-text="count">{ initialCount }</pre>
+    <button x-on:click="count++">+</button>
+  </div>
 </div>
 
 <div class="counter-message">
-	<slot />
+  <slot />
 </div>
 
-<style>
-	.counter {
-		display: grid;
-		font-size: 2em;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		margin-top: 2em;
-		place-items: center;
-	}
+<div
+  x-data="{
+      users : [],
+      loadUsers() {
+        this.users = [
+          { id: 1, name: 'John Doe sdfsd' },
+          { id: 2, name: 'Jane Smith sdfsd' }
+        ]
+      }
+    }"
+>
+  <button @click="loadUsers()">Load Users</button>
 
-	.counter-message {
-		text-align: center;
-	}
-</style>
+  <template x-for="user in users" :key="user.id">
+    <div x-text="user.name"></div>
+  </template>
+</div>
+<!-- 
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('userList', () => ({
+      users: [] as { id: number; name: string }[],
+
+      async loadUsers() {
+        this.users = [
+          { id: 1, name: 'John Doe' },
+          { id: 2, name: 'Jane Smith' }
+        ]
+      }
+    }))
+  })
+</script> -->

@@ -1,40 +1,29 @@
 ---
-// Component Imports
-import Counter from '../components/Counter.astro';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import Layout from '../layouts/Layout.astro'
+import Counter from '../components/Counter.astro'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<style>
-			html,
-			body {
-				font-family: system-ui;
-				margin: 0;
-			}
-			body {
-				padding: 2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<!-- Note: no `client:load` necessary since AlpineJS is always included -->
-			<Counter>
-				<h1>Hello, AlpineJS!</h1>
-			</Counter>
+<Layout>
+  <Counter>
+    <h1>Hello, AlpineJS!</h1>
+  </Counter>
+  <Counter initialCount={5}>
+    <h2>Use Astro to pass in server-side props</h2>
+  </Counter>
 
-			<!-- Note: pass props to Astro components to initialize Alpine with a certain state -->
-			<Counter initialCount={5}>
-				<h2>Use Astro to pass in server-side props</h2>
-			</Counter>
-		</main>
-	</body>
-</html>
+  <div x-data="{ progress: 80 }" class="flex items-center gap-4">
+    <div
+      class="radial-progress"
+      :style="`--value: ${progress}`"
+      :aria-valuenow="progress"
+      x-text="`${progress}%`"
+      role="progressbar"
+    >
+      80%
+    </div>
+    <button class="btn btn-primary" @click="progress = Math.floor(Math.random() * 100)">
+      Random Progress
+    </button>
+    <input x-mask="12/99/9999" placeholder="MM/DD/YYYY" />
+  </div>
+</Layout>

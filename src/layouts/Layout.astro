@@ -1,0 +1,33 @@
+---
+import '../styles/app.css'
+import { SEO } from 'astro-seo'
+
+export interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = 'Swift',
+  description = 'A lightweight web starter template built with Astro, Alpine.js, Tailwind CSS, and daisyUI.'
+} = Astro.props
+---
+
+<html lang="en" data-theme="coffee">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <SEO title={title} description={description} />
+  </head>
+  <body>
+    <main class="mockup-window border border-base-300 w-full">
+      <!-- <Navbar /> -->
+      <slot />
+      <!-- <Footer /> -->
+    </main>
+  </body>
+</html>

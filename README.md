@@ -80,10 +80,10 @@ src/
 ## 🌟 推荐库
 
 - 图标使用 astro-icon 管理，项目中采用[ion](https://icon-sets.iconify.design/ion)
+- 排版 https://github.com/tailwindlabs/tailwindcss-typography
 
 ## todo list
 
 - 封装 toast 组件 https://awesomealpine.com/docs/toasts/2-configuration/toast-options/
 - 完善框架页面，添加 daisyui 和 alpinejs 经典页面和组件
-- 添加排版 https://github.com/tailwindlabs/tailwindcss-typography#readme
 - 添加 wrangler 的配置

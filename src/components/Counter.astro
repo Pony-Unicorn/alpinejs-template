@@ -1,10 +1,16 @@
 ---
+import { Icon } from 'astro-icon/components'
+
 interface Props {
   initialCount?: number
 }
 
 const { initialCount = 0 } = Astro.props
 ---
+
+<!-- <Icon name="mdi:home" /> -->
+<Icon name="ion:language" />
+<Icon name="ion:bar-chart-outline" />
 
 <div class="stats shadow" x-data={`{ count: ${initialCount} }`}>
   <div class="stat">
@@ -35,18 +41,3 @@ const { initialCount = 0 } = Astro.props
     <div x-text="user.name"></div>
   </template>
 </div>
-<!-- 
-<script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('userList', () => ({
-      users: [] as { id: number; name: string }[],
-
-      async loadUsers() {
-        this.users = [
-          { id: 1, name: 'John Doe' },
-          { id: 2, name: 'Jane Smith' }
-        ]
-      }
-    }))
-  })
-</script> -->

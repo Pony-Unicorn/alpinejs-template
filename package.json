@@ -25,7 +25,9 @@
     "tailwindcss": "^4.3.5"
   },
   "devDependencies": {
+    "@iconify-json/ion": "^1.2.7",
     "@types/alpinejs": "^3.17.0",
+    "astro-icon": "^1.2.0",
     "prettier": "3.9.10",
     "prettier-plugin-astro": "1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1"

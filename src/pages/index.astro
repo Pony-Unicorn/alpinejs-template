@@ -4,6 +4,103 @@ import Counter from '../components/Counter.astro'
 ---
 
 <Layout>
+  <!-- 主导航条 (DaisyUI navbar + Alpine.js 移动端展开收起) -->
+  <nav
+    class="navbar bg-base-100 shadow rounded-box border border-base-200 px-4"
+    role="navigation"
+    aria-label="main navigation"
+    x-data="{ isOpen: false }"
+  >
+    <div class="navbar-start">
+      <!-- 移动端汉堡下拉菜单 -->
+      <div class="dropdown">
+        <button
+          tabindex="0"
+          role="button"
+          class="btn btn-ghost lg:hidden"
+          aria-label="menu"
+          @click="isOpen = !isOpen"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </button>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow border border-base-200"
+          x-show="isOpen"
+          x-on:click.away="isOpen = false"
+        >
+          <li>
+            <a class="active">首页</a>
+          </li>
+          <li>
+            <a>项目案例</a>
+          </li>
+          <li>
+            <a>关于我们</a>
+          </li>
+          <li class="mt-2 pt-2 border-t border-base-200 flex flex-col gap-2">
+            <a class="btn btn-primary btn-sm w-full">注册</a>
+            <a class="btn btn-ghost btn-sm w-full">登录</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="btn btn-ghost text-xl font-bold text-primary" href="/">
+        MY_LOGO
+      </a>
+    </div>
+
+    <!-- 桌面端菜单列表 -->
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 gap-1">
+        <li>
+          <a class="active font-medium">首页</a>
+        </li>
+        <li>
+          <a class="font-medium">项目案例</a>
+        </li>
+        <li>
+          <a class="font-medium">关于我们</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 桌面端操作按钮 -->
+    <div class="navbar-end hidden lg:flex gap-2">
+      <a class="btn btn-primary">注册</a>
+      <a class="btn btn-ghost">登录</a>
+    </div>
+  </nav>
+
+  <!-- Hero 区域 (DaisyUI hero 组件) -->
+  <section class="hero min-h-96 bg-primary text-primary-content rounded-box shadow-xl py-12">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-4xl md:text-5xl font-bold">新一代全栈脚手架</h1>
+        <p class="py-6 text-lg opacity-90">基于 Astro + Alpine.js + DaisyUI 驱动的极简体验</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <button class="btn btn-neutral rounded-full px-6">立即开始</button>
+          <button class="btn btn-outline text-primary-content border-primary-content hover:bg-primary-content hover:text-primary rounded-full px-6">
+            了解更多
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <Counter>
     <h1>Hello, AlpineJS!</h1>
   </Counter>

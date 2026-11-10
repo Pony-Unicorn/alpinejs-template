@@ -40,41 +40,56 @@ pnpm dev
 
 4. 代码组织
 
-- 组件及其配套 TS 文件放在 components/ 下，同级存放。
+- components/、layouts/、pages/ 存放 Astro 文件。
+- 所有 TypeScript 文件统一放在 scripts/ 目录下。
+- scripts/components/ 存放组件配套的交互逻辑，按组件名称命名。
+- scripts/pages/ 存放页面专属交互逻辑。
 - 简单组件不必创建配套 TS 文件。
-- 通用工具函数、常量放在 lib/。
 - 避免过度抽象，按实际复杂度拆分代码。
 
 ## 目录结构
 
 src/
-├── components/
+├── components/ # Astro 组件
 │ ├── Navbar.astro
 │ ├── Footer.astro
-│ ├── Modal.astro
 │ ├── Toast.astro
-│ ├── toast.ts
-│ ├── ContactForm.astro
-│ └── contact-form.ts
+│ └── ContactForm.astro
 │
-├── images/
-│
-├── layouts/
+├── layouts/ # Astro 布局
 │ └── Layout.astro
 │
-├── pages/
+├── pages/ # 页面
 │ ├── index.astro
-│ ├── about.astro
-│ └── contact.astro
+│ └── about.astro
 │
-├── lib/
-│ ├── constants.ts
-│ ├── utils.ts
-│ ├── format.ts
-│ ├── storage.ts
-│ └── api.ts
+├── scripts/ # 所有 TypeScript 代码
+│ ├── components/ # 组件交互逻辑
+│ │ ├── dropdown.ts
+│ │ └── contact-form.ts
+│ │
+│ ├── pages/ # 页面交互逻辑
+│ │ └── dashboard.ts
+│ │
+│ ├── lib/ # 通用工具模块
+│ │ ├── api.ts
+│ │ ├── utils.ts
+│ │ ├── format.ts
+│ │ └── storage.ts
+│ │
+│ ├── i18n/ # 国际化
+│ │ ├── config.ts
+│ │ └── utils.ts
+│ │
+│ ├── alpine.ts # Alpine 注册入口
+│ └── constants.ts # 全局常量
 │
-├── alpine.ts
+├── images/
+│ ├── logo.svg
+│ └── hero.webp
+│
+├── icons/
+│
 └── app.css
 
 ## 🌟 推荐库
@@ -86,6 +101,8 @@ src/
 
 - 封装 toast 组件 https://awesomealpine.com/docs/toasts/2-configuration/toast-options/
 - 完善框架页面，添加 daisyui 和 alpinejs 经典页面和组件
+  - container 组件
 - 添加 wrangler 的配置
 - 书写 AGENTS.md 文件
 - 封装一个通用的 alpinejs 的组件，包含数据状态：加载中、成功、失败，真实数据
+- 添加 icons 和 images 例子图片

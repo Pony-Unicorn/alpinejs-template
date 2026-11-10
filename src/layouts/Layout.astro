@@ -35,5 +35,12 @@ const {
       <slot />
       <!-- <Footer /> -->
     </main>
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
   </body>
 </html>

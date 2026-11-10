@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Counter from '../components/Counter.astro'
+---
+
+<Layout>
+ 
+  <Counter>
+    <h1>Hello, AlpineJS!</h1>
+  </Counter>
+  <Counter initialCount={5}>
+    <h2>Use Astro to pass in server-side props</h2>
+  </Counter>
+
+  <div x-data="{ progress: 80 }" class="flex items-center gap-4">
+    <div
+      class="radial-progress"
+      :style="`--value: ${progress}`"
+      :aria-valuenow="progress"
+      x-text="`${progress}%`"
+      role="progressbar"
+    >
+      80%
+    </div>
+    <button class="btn btn-primary" @click="progress = Math.floor(Math.random() * 100)">
+      Random Progress
+    </button>
+    <input x-mask="12/99/9999" placeholder="MM/DD/YYYY" />
+  </div>
+</Layout>

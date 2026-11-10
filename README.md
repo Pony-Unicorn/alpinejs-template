@@ -87,3 +87,5 @@ src/
 - 封装 toast 组件 https://awesomealpine.com/docs/toasts/2-configuration/toast-options/
 - 完善框架页面，添加 daisyui 和 alpinejs 经典页面和组件
 - 添加 wrangler 的配置
+- 书写 AGENTS.md 文件
+- 封装一个通用的 alpinejs 的组件，包含数据状态：加载中、成功、失败，真实数据

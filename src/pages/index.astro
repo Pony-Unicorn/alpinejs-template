@@ -101,6 +101,11 @@ import Counter from '../components/Counter.astro'
     </div>
   </section>
 
+  <div class="flex flex-col" x-data>
+    <span x-text="dayjs().format()"></span>
+    <span x-text="dayjs().utc().format()"></span>
+  </div>
+
   <Counter>
     <h1>Hello, AlpineJS!</h1>
   </Counter>

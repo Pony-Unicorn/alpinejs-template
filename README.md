@@ -104,5 +104,4 @@ src/
   - container 组件
 - 添加 wrangler 的配置
 - 书写 AGENTS.md 文件
-- 封装一个通用的 alpinejs 的组件，包含数据状态：加载中、成功、失败，真实数据
 - 添加 icons 和 images 例子图片

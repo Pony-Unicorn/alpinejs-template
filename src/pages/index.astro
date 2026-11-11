@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import swiftLogo from '../images/swift-logo.png'
 ---
 
 <Layout
@@ -10,10 +12,17 @@ import { Icon } from 'astro-icon/components'
   <div class="space-y-24 py-4">
     <!-- ==================== HERO SECTION ==================== -->
     <section class="relative text-center space-y-8 pt-6 pb-12">
-      <!-- Top Badge -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-wide">
-        <Icon name="ion:sparkles" class="h-4 w-4" />
-        <span>现代化极简全栈脚手架 · 性能无妥协</span>
+      <!-- Brand Logo & Top Badge -->
+      <div class="flex flex-col items-center gap-3">
+        <Image
+          src={swiftLogo}
+          alt="Swift Logo"
+          class="h-20 w-20 sm:h-24 sm:w-24 object-contain drop-shadow-md hover:scale-105 transition-transform"
+        />
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+          <Icon name="ion:sparkles" class="h-4 w-4" />
+          <span>现代化极简全栈脚手架 · 性能无妥协</span>
+        </div>
       </div>
 
       <!-- Main Headline -->

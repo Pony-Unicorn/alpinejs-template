@@ -1,5 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import swiftLogo from '../images/swift-logo.png'
 const currentYear = new Date().getFullYear()
 ---
 
@@ -8,10 +10,8 @@ const currentYear = new Date().getFullYear()
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
       <!-- Col 1: Brand Info -->
       <div class="md:col-span-2 space-y-3">
-        <div class="flex items-center gap-2">
-          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-content">
-            <Icon name="ion:flash" class="h-4 w-4" />
-          </div>
+        <div class="flex items-center gap-2.5">
+          <Image src={swiftLogo} alt="Swift Logo" class="h-8 w-8 object-contain rounded-md" />
           <span class="text-lg font-bold">Swift (AlpineJS Template)</span>
         </div>
         <p class="text-sm text-base-content/70 max-w-md leading-relaxed">

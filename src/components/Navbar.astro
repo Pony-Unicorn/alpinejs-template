@@ -1,5 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import swiftLogo from '../images/swift-logo.png'
 ---
 
 <header
@@ -8,10 +10,12 @@ import { Icon } from 'astro-icon/components'
 >
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
     <!-- Brand -->
-    <a href="/" class="flex items-center gap-2 group">
-      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-content shadow-sm transition-transform group-hover:scale-105">
-        <Icon name="ion:flash" class="h-5 w-5" />
-      </div>
+    <a href="/" class="flex items-center gap-2.5 group">
+      <Image
+        src={swiftLogo}
+        alt="Swift Logo"
+        class="h-9 w-9 object-contain rounded-lg transition-transform group-hover:scale-105"
+      />
       <div class="flex items-baseline gap-2">
         <span class="text-xl font-bold tracking-tight text-base-content">Swift</span>
         <span class="badge badge-sm badge-outline opacity-70">Astro + Alpine</span>

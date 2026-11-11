@@ -1,30 +1,293 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Counter from '../components/Counter.astro'
+import { Icon } from 'astro-icon/components'
 ---
 
-<Layout>
- 
-  <Counter>
-    <h1>Hello, AlpineJS!</h1>
-  </Counter>
-  <Counter initialCount={5}>
-    <h2>Use Astro to pass in server-side props</h2>
-  </Counter>
+<Layout
+  title="关于项目与作者 - Swift (Astro + Alpine.js)"
+  description="了解 Swift 脚手架的设计哲学、开发规范，以及作者 Pony 的个人介绍与联系方式。"
+>
+  <div class="space-y-16 py-4 max-w-5xl mx-auto">
+    <!-- ==================== HEADER BANNER ==================== -->
+    <section class="text-center space-y-4 pt-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold">
+        <Icon name="ion:information-circle-outline" class="h-4 w-4" />
+        <span>About & Guidelines</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">关于项目与作者</h1>
+      <p class="text-base-content/75 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        探讨极简工程规范，回归 Web 开发的高效本质。这里包含 Swift 模板的架构设计指引与作者个人介绍。
+      </p>
+    </section>
 
-  <div x-data="{ progress: 80 }" class="flex items-center gap-4">
-    <div
-      class="radial-progress"
-      :style="`--value: ${progress}`"
-      :aria-valuenow="progress"
-      x-text="`${progress}%`"
-      role="progressbar"
-    >
-      80%
-    </div>
-    <button class="btn btn-primary" @click="progress = Math.floor(Math.random() * 100)">
-      Random Progress
-    </button>
-    <input x-mask="12/99/9999" placeholder="MM/DD/YYYY" />
+    <!-- ==================== AUTHOR INTRODUCTION ==================== -->
+    <section class="card bg-base-100 border border-base-content/10 shadow-sm overflow-hidden">
+      <div class="card-body p-6 sm:p-10 space-y-8">
+        <!-- Top Profile Row -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-base-content/10">
+          <div class="flex items-center gap-4">
+            <div class="avatar placeholder">
+              <div class="bg-primary text-primary-content rounded-2xl w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shadow-md">
+                <span class="text-2xl sm:text-3xl font-black">P</span>
+              </div>
+            </div>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Pony</h2>
+                <span class="badge badge-primary badge-sm font-medium">Author</span>
+              </div>
+              <p class="text-sm text-base-content/80 font-medium">
+                Passionate Self-taught Software Developer 👋🏼
+              </p>
+              <p class="text-xs text-base-content/60">
+                Decentralized & Web3 Believer · Quant Trading · Crypto Enthusiast
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <a
+              href="https://github.com/Pony-Unicorn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline btn-sm rounded-xl gap-2 flex-1 sm:flex-initial"
+            >
+              <Icon name="ion:logo-github" class="h-4 w-4" />
+              GitHub
+            </a>
+            <a
+              href="https://github.com/Pony-Unicorn/alpinejs-template/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary btn-sm rounded-xl gap-2 flex-1 sm:flex-initial"
+            >
+              <Icon name="ion:chatbubble-ellipses-outline" class="h-4 w-4" />
+              提交 Issue 交流
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 Key Intro Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Card 1: Decentralized believer -->
+          <div class="flex gap-4 p-4 rounded-xl bg-base-200/50 border border-base-content/5">
+            <div class="h-10 w-10 shrink-0 rounded-lg bg-error/10 text-error flex items-center justify-center">
+              <Icon name="ion:cube-outline" class="h-5 w-5" />
+            </div>
+            <div class="space-y-1">
+              <h3 class="text-sm font-bold text-base-content">去中心化信仰与 Crypto</h3>
+              <p class="text-xs text-base-content/75 leading-relaxed">
+                坚定的去中心化信仰者（Decentralized Believer），热爱探索与构建 Crypto
+                生态，深信开放互联的去中心化技术力量。
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: Current Job / GameFi & Quant -->
+          <div class="flex gap-4 p-4 rounded-xl bg-base-200/50 border border-base-content/5">
+            <div class="h-10 w-10 shrink-0 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+              <Icon name="ion:trending-up-outline" class="h-5 w-5" />
+            </div>
+            <div class="space-y-1">
+              <h3 class="text-sm font-bold text-base-content">当前业务：GameFi 与量化交易研究</h3>
+              <p class="text-xs text-base-content/75 leading-relaxed">
+                目前主要深耕于 GameFi 赛道，专注于量化交易策略（Quant Trading
+                Strategy）的建模与研究，探索数字资产市场的运行规律。
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3: Continuous Learning -->
+          <div class="flex gap-4 p-4 rounded-xl bg-base-200/50 border border-base-content/5">
+            <div class="h-10 w-10 shrink-0 rounded-lg bg-success/10 text-success flex items-center justify-center">
+              <Icon name="ion:school-outline" class="h-5 w-5" />
+            </div>
+            <div class="space-y-1">
+              <h3 class="text-sm font-bold text-base-content">持续精进与探索领域</h3>
+              <p class="text-xs text-base-content/75 leading-relaxed">
+                当下正在系统研习算法设计（Algorithm
+                Design）及区块链底层系统架构，坚持自学驱动与实践沉淀。
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4: How to reach -->
+          <div class="flex gap-4 p-4 rounded-xl bg-base-200/50 border border-base-content/5">
+            <div class="h-10 w-10 shrink-0 rounded-lg bg-info/10 text-info flex items-center justify-center">
+              <Icon name="ion:mail-outline" class="h-5 w-5" />
+            </div>
+            <div class="space-y-1">
+              <h3 class="text-sm font-bold text-base-content">联系方式与交流</h3>
+              <p class="text-xs text-base-content/75 leading-relaxed">
+                欢迎通过 GitHub 创建 Issue 与我交流。请在 Issue
+                中清晰注明你的意图、反馈或合作想法，我会定期查阅并回复。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECT GUIDELINES ==================== -->
+    <section class="space-y-8">
+      <div class="space-y-3">
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+          <Icon name="ion:layers-outline" class="h-4 w-4" />
+          <span>Architecture & Rules</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">项目设计哲学与开发规范</h2>
+        <div class="alert alert-neutral border border-base-content/10 shadow-sm rounded-2xl">
+          <Icon name="ion:sparkles-outline" class="h-6 w-6 text-primary shrink-0" />
+          <div>
+            <h4 class="font-bold text-sm">核心原则</h4>
+            <p class="text-xs text-base-content/80 mt-0.5">
+              简单的保持简单，复杂的合理拆分。
+              <strong>Astro 负责页面渲染与内容架构，Alpine.js 负责动态交互。</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guidelines Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 1. Alpine.js 交互规范 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="h-9 w-9 rounded-lg bg-warning/10 text-warning flex items-center justify-center font-bold text-sm">
+                01
+              </div>
+              <h3 class="text-lg font-bold">Alpine.js 交互规范</h3>
+            </div>
+            <ul class="space-y-3 text-xs text-base-content/80 leading-relaxed list-disc list-inside">
+              <li>
+                <strong class="text-base-content">轻量简单交互：</strong>
+                直接使用 HTML 内联 Alpine 指令（如{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded">x-data</code>,{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded">x-show</code>,{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded">x-on:click</code>
+                ），无须额外创建脚本。
+              </li>
+              <li>
+                <strong class="text-base-content">多状态与复杂交互：</strong>
+                使用 <code class="bg-base-200 px-1 py-0.5 rounded">Alpine.data()</code>{' '}
+                抽离业务逻辑至独立 TS 文件，保持模板整洁。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. 全局状态规范 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="h-9 w-9 rounded-lg bg-info/10 text-info flex items-center justify-center font-bold text-sm">
+                02
+              </div>
+              <h3 class="text-lg font-bold">状态作用域规范</h3>
+            </div>
+            <ul class="space-y-3 text-xs text-base-content/80 leading-relaxed list-disc list-inside">
+              <li>
+                <strong class="text-base-content">局部私有状态：</strong>
+                仅在当前组件或区块内部起效的状态，优先使用{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded">x-data</code> 管理。
+              </li>
+              <li>
+                <strong class="text-base-content">跨页面/跨组件全局状态：</strong>
+                使用 <code class="bg-base-200 px-1 py-0.5 rounded">
+                  Alpine.store()
+                </code>，统一在{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded">src/scripts/alpine.ts</code>{' '}
+                入口中集中注册。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. 命名规范 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="h-9 w-9 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center font-bold text-sm">
+                03
+              </div>
+              <h3 class="text-lg font-bold">命名命名约定</h3>
+            </div>
+            <ul class="space-y-3 text-xs text-base-content/80 leading-relaxed list-disc list-inside">
+              <li>
+                <strong class="text-base-content">Astro 组件与布局：</strong>
+                遵循{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded text-primary font-mono">
+                  PascalCase
+                </code>
+                （大驼峰），例如 <code class="bg-base-200 px-1 py-0.5 rounded">Navbar.astro</code>、
+                <code class="bg-base-200 px-1 py-0.5 rounded">Toaster.astro</code>。
+              </li>
+              <li>
+                <strong class="text-base-content">TypeScript / JavaScript 模块：</strong>
+                遵循{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded text-primary font-mono">
+                  kebab-case
+                </code>
+                （短横线连字符），例如{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded">toaster.ts</code>、
+                <code class="bg-base-200 px-1 py-0.5 rounded">api.ts</code>。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4. 代码组织与抽象原则 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+          <div class="card-body space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="h-9 w-9 rounded-lg bg-success/10 text-success flex items-center justify-center font-bold text-sm">
+                04
+              </div>
+              <h3 class="text-lg font-bold">代码组织与适度抽象</h3>
+            </div>
+            <ul class="space-y-3 text-xs text-base-content/80 leading-relaxed list-disc list-inside">
+              <li>
+                <strong class="text-base-content">代码归拢：</strong>
+                所有 TS 业务代码统一存放于{' '}
+                <code class="bg-base-200 px-1 py-0.5 rounded">src/scripts/</code>{' '}
+                下，按组件与页面分层。
+              </li>
+              <li>
+                <strong class="text-base-content">拒绝过度设计：</strong>
+                简单组件不必机械式创建配套 TS 文件，按实际复杂度合理拆分。
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Directory Structure Preview -->
+      <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+        <div class="card-body p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <Icon name="ion:folder-outline" class="h-5 w-5 text-primary" />
+              <h3 class="text-base font-bold">标准目录结构一览</h3>
+            </div>
+            <span class="text-xs text-base-content/60 font-mono">src/ tree</span>
+          </div>
+
+          <pre class="bg-base-200/80 border border-base-content/5 p-4 rounded-xl text-xs font-mono text-base-content/90 overflow-x-auto leading-relaxed">
+src/
+├── components/          # Astro 页面组件 (Navbar, Footer, Toaster 等)
+├── layouts/             # Astro 布局外层 (Layout.astro)
+├── pages/               # 静态与路由页面 (index.astro, about.astro)
+├── scripts/             # TypeScript 交互与业务逻辑
+│   ├── components/      # 组件配套逻辑 (如 toaster.ts)
+│   ├── pages/           # 页面专属复杂交互逻辑
+│   ├── lib/             # 通用封装 (api.ts, utils.ts 等)
+│   └── alpine.ts        # Alpine 全局插件与 Store 统一注册中心
+├── icons/               # 本地自定义 SVG 图标
+├── images/              # 图片静态资源
+└── app.css              # Tailwind CSS v4 与 daisyUI 配置入口</pre>
+        </div>
+      </div>
+    </section>
   </div>
 </Layout>

@@ -1,0 +1,119 @@
+---
+import { Icon } from 'astro-icon/components'
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="w-full border-t border-base-content/10 bg-base-200/50 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <!-- Col 1: Brand Info -->
+      <div class="md:col-span-2 space-y-3">
+        <div class="flex items-center gap-2">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-content">
+            <Icon name="ion:flash" class="h-4 w-4" />
+          </div>
+          <span class="text-lg font-bold">Swift (AlpineJS Template)</span>
+        </div>
+        <p class="text-sm text-base-content/70 max-w-md leading-relaxed">
+          极简现代化的全栈静态与轻交互脚手架。秉承「简单的保持简单，复杂的合理拆分」设计哲学，享受极致性能与极速开发体验。
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="badge badge-sm badge-neutral">Astro 5</span>
+          <span class="badge badge-sm badge-neutral">Alpine.js 3</span>
+          <span class="badge badge-sm badge-neutral">Tailwind CSS v4</span>
+          <span class="badge badge-sm badge-neutral">daisyUI 5</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation Links -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-semibold tracking-wide uppercase text-base-content/90">页面导航</h4>
+        <ul class="space-y-2 text-sm text-base-content/70">
+          <li>
+            <a href="/" class="hover:text-primary transition-colors">
+              首页概览
+            </a>
+          </li>
+          <li>
+            <a href="/#features" class="hover:text-primary transition-colors">
+              核心特性
+            </a>
+          </li>
+          <li>
+            <a href="/#interactive-demo" class="hover:text-primary transition-colors">
+              交互示例
+            </a>
+          </li>
+          <li>
+            <a href="/#quick-start" class="hover:text-primary transition-colors">
+              快速上手
+            </a>
+          </li>
+          <li>
+            <a href="/about" class="hover:text-primary transition-colors">
+              关于模版
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Ecosystem & Links -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-semibold tracking-wide uppercase text-base-content/90">
+          生态与文档
+        </h4>
+        <ul class="space-y-2 text-sm text-base-content/70">
+          <li>
+            <a
+              href="https://github.com/Pony-Unicorn/alpinejs-template"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+            >
+              <Icon name="ion:logo-github" class="h-4 w-4" />
+              GitHub 仓库
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://astro.build"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-primary transition-colors"
+            >
+              Astro 官方文档
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://alpinejs.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-primary transition-colors"
+            >
+              Alpine.js 官方指南
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://daisyui.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-primary transition-colors"
+            >
+              daisyUI 组件库
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider & Bottom Bar -->
+    <div class="border-t border-base-content/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-base-content/60">
+      <p>© {currentYear} Pony-Unicorn / Swift Template. MIT License.</p>
+      <p class="flex items-center gap-1">
+        Built with <Icon name="ion:heart" class="h-3.5 w-3.5 text-error inline" /> Astro + Alpine.js
+      </p>
+    </div>
+  </div>
+</footer>

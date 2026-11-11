@@ -1,146 +1,469 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Counter from '../components/Counter.astro'
+import { Icon } from 'astro-icon/components'
 ---
 
-<Layout>
-  <!-- 主导航条 (DaisyUI navbar + Alpine.js 移动端展开收起) -->
-  <nav
-    class="navbar bg-base-100 shadow rounded-box border border-base-200 px-4"
-    role="navigation"
-    aria-label="main navigation"
-    x-data="{ isOpen: false }"
-  >
-    <div class="navbar-start">
-      <!-- 移动端汉堡下拉菜单 -->
-      <div class="dropdown">
-        <button
-          tabindex="0"
-          role="button"
-          class="btn btn-ghost lg:hidden"
-          aria-label="menu"
-          @click="isOpen = !isOpen"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h8m-8 6h16"
-            />
-          </svg>
-        </button>
-        <ul
-          tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow border border-base-200"
-          x-show="isOpen"
-          x-on:click.away="isOpen = false"
-        >
-          <li>
-            <a class="active">首页</a>
-          </li>
-          <li>
-            <a>项目案例</a>
-          </li>
-          <li>
-            <a>关于我们</a>
-          </li>
-          <li class="mt-2 pt-2 border-t border-base-200 flex flex-col gap-2">
-            <a class="btn btn-primary btn-sm w-full">注册</a>
-            <a class="btn btn-ghost btn-sm w-full">登录</a>
-          </li>
-        </ul>
+<Layout
+  title="Swift - Astro + Alpine.js 轻量全栈起手式"
+  description="基于 Astro 5、Alpine.js 3、Tailwind CSS v4 与 daisyUI 5 构建的极速、轻量、高可维护性 Web 脚手架。"
+>
+  <div class="space-y-24 py-4">
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="relative text-center space-y-8 pt-6 pb-12">
+      <!-- Top Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+        <Icon name="ion:sparkles" class="h-4 w-4" />
+        <span>现代化极简全栈脚手架 · 性能无妥协</span>
       </div>
 
-      <a class="btn btn-ghost text-xl font-bold text-primary" href="/">
-        MY_LOGO
-      </a>
-    </div>
+      <!-- Main Headline -->
+      <div class="max-w-4xl mx-auto space-y-4">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+          极速静态渲染 <br class="hidden sm:inline" />
+          <span class="text-primary underline decoration-wavy decoration-primary/40">
+            轻量声明式交互
+          </span>
+        </h1>
+        <p class="text-lg sm:text-xl text-base-content/75 max-w-2xl mx-auto leading-relaxed">
+          告别臃肿庞大的 SPA 框架运行时。页面骨架与 SEO 交给
+          <span class="font-semibold text-base-content">Astro</span>，轻量动态交互交给
+          <span class="font-semibold text-base-content">Alpine.js</span>，保持简单，拒绝过度设计。
+        </p>
+      </div>
 
-    <!-- 桌面端菜单列表 -->
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1 gap-1">
-        <li>
-          <a class="active font-medium">首页</a>
-        </li>
-        <li>
-          <a class="font-medium">项目案例</a>
-        </li>
-        <li>
-          <a class="font-medium">关于我们</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- 桌面端操作按钮 -->
-    <div class="navbar-end hidden lg:flex gap-2">
-      <a class="btn btn-primary">注册</a>
-      <a class="btn btn-ghost">登录</a>
-    </div>
-  </nav>
-
-  <!-- Hero 区域 (DaisyUI hero 组件) -->
-  <section class="hero min-h-96 bg-primary text-primary-content rounded-box shadow-xl py-12">
-    <div class="hero-content text-center">
-      <div class="max-w-md">
-        <h1 class="text-4xl md:text-5xl font-bold">新一代全栈脚手架</h1>
-        <p class="py-6 text-lg opacity-90">基于 Astro + Alpine.js + DaisyUI 驱动的极简体验</p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <button class="btn btn-neutral rounded-full px-6">立即开始</button>
-          <button class="btn btn-outline text-primary-content border-primary-content hover:bg-primary-content hover:text-primary rounded-full px-6">
-            了解更多
+      <!-- Copyable CLI Command Card -->
+      <div
+        class="max-w-xl mx-auto"
+        x-data="{
+          copied: false,
+          cmd: 'pnpm dlx degit Pony-Unicorn/alpinejs-template my-project',
+          copy() {
+            navigator.clipboard.writeText(this.cmd);
+            this.copied = true;
+            $store.toasts.success('复制成功！');
+            setTimeout(() => this.copied = false, 2000);
+          }
+        }"
+      >
+        <div class="flex items-center justify-between gap-3 bg-base-200/80 border border-base-content/10 rounded-xl px-4 py-3 shadow-inner text-sm font-mono text-left">
+          <div class="flex items-center gap-2 overflow-x-auto select-all">
+            <span class="text-primary select-none font-bold">$</span>
+            <span class="text-base-content/90 font-medium whitespace-nowrap" x-text="cmd"></span>
+          </div>
+          <button
+            class="btn btn-sm btn-primary shrink-0 gap-1.5"
+            @click="copy()"
+            :class="copied ? 'btn-success' : 'btn-primary'"
+            aria-label="复制命令"
+          >
+            <template x-if="!copied">
+              <span class="flex items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+                复制
+              </span>
+            </template>
+            <template x-if="copied">
+              <span class="flex items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                已复制
+              </span>
+            </template>
           </button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <div class="flex flex-col" x-data>
-    <span x-text="dayjs().format()"></span>
-    <span x-text="dayjs().utc().format()"></span>
-  </div>
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a
+          href="#quick-start"
+          class="btn btn-primary rounded-xl px-6 shadow-md hover:shadow-lg transition-all"
+        >
+          <Icon name="ion:rocket-outline" class="h-5 w-5" />
+          立即开始
+        </a>
+        <a href="#interactive-demo" class="btn btn-outline rounded-xl px-6">
+          <Icon name="ion:play-circle-outline" class="h-5 w-5" />
+          查看交互演示
+        </a>
+      </div>
+    </section>
 
-  <div x-data class="join">
-    <button class="btn btn-success" @click="$store.toasts.success('操作成功')">
-      操作成功
-    </button>
-    <button class="btn btn-error" @click="$store.toasts.error('操作失败')">
-      操作失败
-    </button>
-    <button class="btn btn-warning" @click="$store.toasts.warning('操作警告')">
-      操作警告
-    </button>
-    <button class="btn btn-info" @click="$store.toasts.info('操作信息')">
-      操作信息
-    </button>
-  </div>
+    <!-- ==================== TECH STACK BADGES ==================== -->
+    <section class="border-y border-base-content/10 py-6">
+      <div class="text-center space-y-4">
+        <p class="text-xs uppercase tracking-wider font-semibold text-base-content/60">
+          技术栈选型与核心生态
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-base-content/80 font-medium">
+          <div class="flex items-center gap-2 hover:text-primary transition-colors">
+            <Icon name="ion:planet-outline" class="h-5 w-5 text-primary" />
+            <span>Astro 5</span>
+          </div>
+          <div class="flex items-center gap-2 hover:text-primary transition-colors">
+            <Icon name="ion:flash-outline" class="h-5 w-5 text-warning" />
+            <span>Alpine.js 3</span>
+          </div>
+          <div class="flex items-center gap-2 hover:text-primary transition-colors">
+            <Icon name="ion:color-palette-outline" class="h-5 w-5 text-secondary" />
+            <span>Tailwind CSS v4</span>
+          </div>
+          <div class="flex items-center gap-2 hover:text-primary transition-colors">
+            <Icon name="ion:flower-outline" class="h-5 w-5 text-accent" />
+            <span>daisyUI 5</span>
+          </div>
+          <div class="flex items-center gap-2 hover:text-primary transition-colors">
+            <Icon name="ion:shapes-outline" class="h-5 w-5 text-info" />
+            <span>astro-icon (Ion)</span>
+          </div>
+          <div class="flex items-center gap-2 hover:text-primary transition-colors">
+            <Icon name="ion:paper-plane-outline" class="h-5 w-5 text-success" />
+            <span>Ky (HTTP)</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <Counter>
-    <h1>Hello, AlpineJS!</h1>
-  </Counter>
-  <Counter initialCount={5}>
-    <h2>Use Astro to pass in server-side props</h2>
-  </Counter>
+    <!-- ==================== CORE PHILOSOPHY & FEATURES ==================== -->
+    <section id="features" class="space-y-10 scroll-mt-24">
+      <div class="text-center space-y-3 max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight">设计理念与核心特性</h2>
+        <p class="text-base-content/70">
+          「简单的保持简单，复杂的合理拆分」。不追求庞大繁杂的概念，专注最高效的开发产出。
+        </p>
+      </div>
 
-  <div x-data="{ progress: 80 }" class="flex items-center gap-4">
-    <div
-      class="radial-progress"
-      :style="`--value: ${progress}`"
-      :aria-valuenow="progress"
-      x-text="`${progress}%`"
-      role="progressbar"
-    >
-      80%
-    </div>
-    <button class="btn btn-primary" @click="progress = Math.floor(Math.random() * 100)">
-      Random Progress
-    </button>
-    <input x-mask="12/99/9999" placeholder="MM/DD/YYYY" />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="card-body">
+            <div class="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-2">
+              <Icon name="ion:speedometer-outline" class="h-6 w-6" />
+            </div>
+            <h3 class="card-title text-lg font-bold">零水合负担与极限性能</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              基于 Astro 岛屿架构，默认不向客户端发送多余的 JavaScript。毫秒级首屏加载，天然满分
+              Lighthouse 与搜索引擎友好。
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="card-body">
+            <div class="h-12 w-12 rounded-xl bg-warning/10 text-warning flex items-center justify-center mb-2">
+              <Icon name="ion:flash-outline" class="h-6 w-6" />
+            </div>
+            <h3 class="card-title text-lg font-bold">声明式轻量响应（Alpine.js）</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              体积仅约 15KB，无需繁重打包流程。通过熟悉的 HTML 指令（
+              <code class="text-xs bg-base-200 px-1 py-0.5 rounded">x-data</code>,{' '}
+              <code class="text-xs bg-base-200 px-1 py-0.5 rounded">x-on</code>）轻松驱动前端交互。
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="card-body">
+            <div class="h-12 w-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-2">
+              <Icon name="ion:color-wand-outline" class="h-6 w-6" />
+            </div>
+            <h3 class="card-title text-lg font-bold">Tailwind v4 + daisyUI 5</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              全面升级 Vite 原生 Tailwind CSS v4，秒速编译。结合 daisyUI
+              的高品质语义化组件与成熟的主题定制能力。
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="card-body">
+            <div class="h-12 w-12 rounded-xl bg-info/10 text-info flex items-center justify-center mb-2">
+              <Icon name="ion:notifications-outline" class="h-6 w-6" />
+            </div>
+            <h3 class="card-title text-lg font-bold">内置响应式 Toaster 消息系统</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              开箱自带基于{' '}
+              <code class="text-xs bg-base-200 px-1 py-0.5 rounded">$store.toasts</code>{' '}
+              的全局消息提示队列与退出动画，无需安装额外的消息通知三方库。
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="card-body">
+            <div class="h-12 w-12 rounded-xl bg-success/10 text-success flex items-center justify-center mb-2">
+              <Icon name="ion:folder-open-outline" class="h-6 w-6" />
+            </div>
+            <h3 class="card-title text-lg font-bold">清晰明确的工程组织架构</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              TS 代码统一收敛在{' '}
+              <code class="text-xs bg-base-200 px-1 py-0.5 rounded">src/scripts/</code>
+              ，组件逻辑、页面逻辑各司其职，有效杜绝代码腐化。
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="card-body">
+            <div class="h-12 w-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-2">
+              <Icon name="ion:extension-puzzle-outline" class="h-6 w-6" />
+            </div>
+            <h3 class="card-title text-lg font-bold">实用插件与工具预装</h3>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              内置 <code class="text-xs bg-base-200 px-1 py-0.5 rounded">@alpinejs/mask</code>{' '}
+              表单掩码、Astro Sitemap、Astro SEO 以及轻量优雅的 Ky 请求库。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INTERACTIVE SHOWCASE ==================== -->
+    <section id="interactive-demo" class="space-y-8 scroll-mt-24">
+      <div class="text-center space-y-3 max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight">交互体验实验室</h2>
+        <p class="text-base-content/70">
+          亲手体验脚手架中开箱即用的 Alpine.js 响应式能力与 DaisyUI 交互表现。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Interactive Card 1: Toasts -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+          <div class="card-body space-y-3">
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:chatbox-ellipses-outline" class="h-5 w-5 text-primary" />
+              全局消息状态 ($store.toasts)
+            </h3>
+            <p class="text-xs text-base-content/70">
+              调用全局注册的 Alpine store，自动入队并支持多类型展示：
+            </p>
+            <div class="grid grid-cols-2 gap-2 pt-2" x-data>
+              <button
+                class="btn btn-success btn-sm w-full"
+                @click="$store.toasts.success('操作成功！数据已更新。')"
+              >
+                成功通知
+              </button>
+              <button
+                class="btn btn-error btn-sm w-full"
+                @click="$store.toasts.error('操作失败，网络连接异常！')"
+              >
+                失败提示
+              </button>
+              <button
+                class="btn btn-warning btn-sm w-full"
+                @click="$store.toasts.warning('请注意，此操作不可撤销！')"
+              >
+                警告消息
+              </button>
+              <button
+                class="btn btn-info btn-sm w-full"
+                @click="$store.toasts.info('新版本 v0.0.1 已经就绪。')"
+              >
+                普通信息
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Card 2: Reactive State -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+          <div class="card-body space-y-3" x-data="{ count: 10, max: 20 }">
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:calculator-outline" class="h-5 w-5 text-warning" />
+              响应式状态与进度绑定
+            </h3>
+            <p class="text-xs text-base-content/70">
+              内联 <code class="text-xs bg-base-200 px-1 rounded">x-data</code>{' '}
+              驱动，数据变更毫秒级同步：
+            </p>
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-medium">当前数值:</span>
+                <span class="badge badge-primary font-mono text-base font-bold" x-text="count">
+                  10
+                </span>
+              </div>
+              <progress
+                class="progress progress-primary w-full"
+                :value="count"
+                :max="max"
+              ></progress>
+              <div class="flex items-center gap-2">
+                <button
+                  class="btn btn-sm btn-outline flex-1"
+                  @click="count = Math.max(0, count - 1)"
+                  :disabled="count <= 0"
+                >
+                  -1
+                </button>
+                <button
+                  class="btn btn-sm btn-outline flex-1"
+                  @click="count = Math.min(max, count + 1)"
+                  :disabled="count >= max"
+                >
+                  +1
+                </button>
+                <button
+                  class="btn btn-sm btn-ghost"
+                  @click="count = Math.floor(Math.random() * max)"
+                >
+                  随机
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Card 3: Form Masking -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+          <div
+            class="card-body space-y-3"
+            x-data="{
+              dateVal: '',
+              cardVal: ''
+            }"
+          >
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:shield-checkmark-outline" class="h-5 w-5 text-secondary" />
+              输入掩码 (@alpinejs/mask)
+            </h3>
+            <p class="text-xs text-base-content/70">自动格式化日期与银行卡号等规则输入：</p>
+            <div class="space-y-3 pt-1">
+              <div>
+                <label class="label py-1">
+                  <span class="label-text text-xs">日期输入掩码 (MM/DD/YYYY)</span>
+                </label>
+                <input
+                  type="text"
+                  x-mask="99/99/9999"
+                  x-model="dateVal"
+                  placeholder="12/31/2026"
+                  class="input input-bordered input-sm w-full font-mono"
+                />
+              </div>
+              <div>
+                <label class="label py-1">
+                  <span class="label-text text-xs">卡号输入掩码</span>
+                </label>
+                <input
+                  type="text"
+                  x-mask="9999 9999 9999 9999"
+                  x-model="cardVal"
+                  placeholder="4242 4242 4242 4242"
+                  class="input input-bordered input-sm w-full font-mono"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== QUICK START SECTION ==================== -->
+    <section id="quick-start" class="space-y-10 scroll-mt-24">
+      <div class="text-center space-y-3 max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight">三步开启新项目</h2>
+        <p class="text-base-content/70">通过 degit 极速拉取纯净模板，几秒内即可启动开发。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Step 1 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm relative">
+          <div class="card-body space-y-2">
+            <span class="text-3xl font-black text-primary/30">01</span>
+            <h3 class="card-title text-base font-bold">克隆模版仓库</h3>
+            <p class="text-xs text-base-content/70 leading-relaxed">
+              使用 pnpm degit 下载最新模版至本地目录：
+            </p>
+            <pre class="bg-base-200/80 p-3 rounded-lg text-xs font-mono select-all overflow-x-auto text-base-content/90">pnpm dlx degit Pony-Unicorn/alpinejs-template my-project</pre>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm relative">
+          <div class="card-body space-y-2">
+            <span class="text-3xl font-black text-primary/30">02</span>
+            <h3 class="card-title text-base font-bold">安装工程依赖</h3>
+            <p class="text-xs text-base-content/70 leading-relaxed">
+              进入新建目录，一键安装所有依赖项：
+            </p>
+            <pre class="bg-base-200/80 p-3 rounded-lg text-xs font-mono select-all overflow-x-auto text-base-content/90">cd my-project
+pnpm install</pre>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="card bg-base-100 border border-base-content/10 shadow-sm relative">
+          <div class="card-body space-y-2">
+            <span class="text-3xl font-black text-primary/30">03</span>
+            <h3 class="card-title text-base font-bold">启动本地开发</h3>
+            <p class="text-xs text-base-content/70 leading-relaxed">
+              享受 Vite 原生级飞快的开发体验：
+            </p>
+            <pre class="bg-base-200/80 p-3 rounded-lg text-xs font-mono select-all overflow-x-auto text-base-content/90">pnpm dev</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="rounded-3xl bg-primary text-primary-content p-8 sm:p-12 text-center space-y-6 shadow-xl">
+      <div class="max-w-2xl mx-auto space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          开启极简、高表现力的 Web 旅程
+        </h2>
+        <p class="opacity-90 text-sm sm:text-base leading-relaxed">
+          不堆砌过度复杂的工具链，回归最爽快的 Web 本质。欢迎提交 Issue 或贡献 PR。
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="https://github.com/Pony-Unicorn/alpinejs-template"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-neutral rounded-xl px-6"
+        >
+          <Icon name="ion:logo-github" class="h-5 w-5" />在 GitHub 上查看
+        </a>
+        <a
+          href="/about"
+          class="btn btn-outline text-primary-content border-primary-content hover:bg-primary-content hover:text-primary rounded-xl px-6"
+        >
+          了解更多架构规范
+        </a>
+      </div>
+    </section>
   </div>
 </Layout>

@@ -1,0 +1,136 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<header
+  class="sticky top-0 z-40 w-full border-b border-base-content/10 bg-base-100/80 backdrop-blur-md transition-all"
+  x-data="{ mobileMenuOpen: false }"
+>
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
+    <!-- Brand -->
+    <a href="/" class="flex items-center gap-2 group">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-content shadow-sm transition-transform group-hover:scale-105">
+        <Icon name="ion:flash" class="h-5 w-5" />
+      </div>
+      <div class="flex items-baseline gap-2">
+        <span class="text-xl font-bold tracking-tight text-base-content">Swift</span>
+        <span class="badge badge-sm badge-outline opacity-70">Astro + Alpine</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <a href="/" class="text-base-content/80 hover:text-primary transition-colors">
+        首页
+      </a>
+      <a href="/#features" class="text-base-content/80 hover:text-primary transition-colors">
+        核心特性
+      </a>
+      <a
+        href="/#interactive-demo"
+        class="text-base-content/80 hover:text-primary transition-colors"
+      >
+        交互演示
+      </a>
+      <a href="/#quick-start" class="text-base-content/80 hover:text-primary transition-colors">
+        快速上手
+      </a>
+      <a href="/about" class="text-base-content/80 hover:text-primary transition-colors">
+        关于
+      </a>
+    </nav>
+
+    <!-- Desktop Actions -->
+    <div class="hidden md:flex items-center gap-3">
+      <a
+        href="https://github.com/Pony-Unicorn/alpinejs-template"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-ghost btn-circle btn-sm"
+        aria-label="GitHub Repository"
+      >
+        <Icon name="ion:logo-github" class="h-5 w-5" />
+      </a>
+      <a href="/#quick-start" class="btn btn-primary btn-sm rounded-lg shadow-sm">
+        立即起步
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm btn-circle md:hidden"
+      aria-label="Toggle navigation menu"
+      @click="mobileMenuOpen = !mobileMenuOpen"
+    >
+      <Icon name="ion:menu-outline" class="h-6 w-6" x-show="!mobileMenuOpen" />
+      <Icon name="ion:close-outline" class="h-6 w-6" x-show="mobileMenuOpen" x-cloak />
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div
+    class="border-b border-base-content/10 bg-base-100 px-4 py-4 md:hidden"
+    x-show="mobileMenuOpen"
+    x-transition:enter="transition ease-out duration-150"
+    x-transition:enter-start="opacity-0 -translate-y-2"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-100"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 -translate-y-2"
+    x-cloak
+  >
+    <div class="flex flex-col gap-2">
+      <a
+        href="/"
+        class="rounded-lg px-3 py-2 text-base font-medium hover:bg-base-200 transition-colors"
+        @click="mobileMenuOpen = false"
+      >
+        首页
+      </a>
+      <a
+        href="/#features"
+        class="rounded-lg px-3 py-2 text-base font-medium hover:bg-base-200 transition-colors"
+        @click="mobileMenuOpen = false"
+      >
+        核心特性
+      </a>
+      <a
+        href="/#interactive-demo"
+        class="rounded-lg px-3 py-2 text-base font-medium hover:bg-base-200 transition-colors"
+        @click="mobileMenuOpen = false"
+      >
+        交互演示
+      </a>
+      <a
+        href="/#quick-start"
+        class="rounded-lg px-3 py-2 text-base font-medium hover:bg-base-200 transition-colors"
+        @click="mobileMenuOpen = false"
+      >
+        快速上手
+      </a>
+      <a
+        href="/about"
+        class="rounded-lg px-3 py-2 text-base font-medium hover:bg-base-200 transition-colors"
+        @click="mobileMenuOpen = false"
+      >
+        关于
+      </a>
+      <div class="divider my-1"></div>
+      <div class="flex items-center justify-between pt-1">
+        <a
+          href="https://github.com/Pony-Unicorn/alpinejs-template"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors"
+        >
+          <Icon name="ion:logo-github" class="h-5 w-5" />
+          GitHub 源码
+        </a>
+        <a href="/#quick-start" class="btn btn-primary btn-sm" @click="mobileMenuOpen = false">
+          立即起步
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

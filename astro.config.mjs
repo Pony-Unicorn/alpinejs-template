@@ -12,5 +12,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [sitemap(), alpine({ entrypoint: '/src/alpine' }), icon()]
+  integrations: [sitemap(), alpine({ entrypoint: '/src/scripts/alpine' }), icon()]
 })

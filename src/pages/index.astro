@@ -106,6 +106,21 @@ import Counter from '../components/Counter.astro'
     <span x-text="dayjs().utc().format()"></span>
   </div>
 
+  <div x-data class="join">
+    <button class="btn btn-success" @click="$store.toasts.success('操作成功')">
+      操作成功
+    </button>
+    <button class="btn btn-error" @click="$store.toasts.error('操作失败')">
+      操作失败
+    </button>
+    <button class="btn btn-warning" @click="$store.toasts.warning('操作警告')">
+      操作警告
+    </button>
+    <button class="btn btn-info" @click="$store.toasts.info('操作信息')">
+      操作信息
+    </button>
+  </div>
+
   <Counter>
     <h1>Hello, AlpineJS!</h1>
   </Counter>

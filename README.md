@@ -53,7 +53,7 @@ src/
 ├── components/ # Astro 组件
 │ ├── Navbar.astro
 │ ├── Footer.astro
-│ ├── Toast.astro
+│ ├── Toaster.astro
 │ └── ContactForm.astro
 │
 ├── layouts/ # Astro 布局
@@ -99,9 +99,12 @@ src/
 
 ## todo list
 
-- 封装 toast 组件 https://awesomealpine.com/docs/toasts/2-configuration/toast-options/
 - 完善框架页面，添加 daisyui 和 alpinejs 经典页面和组件
   - container 组件
+- 网络请求封装成组件
 - 添加 wrangler 的配置
-- 书写 AGENTS.md 文件
+- 添加 ai 工具
+  - 书写 AGENTS.md 文件
+  - 添加 skill 例如 daisyui、alpinejs等的mcp和skill等
 - 添加 icons 和 images 例子图片
+- 提交 github

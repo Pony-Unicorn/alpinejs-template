@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import swift01 from '../images/swift01.jpeg'
+import swift02 from '../images/swift02.jpeg'
 ---
 
 <Layout
@@ -122,6 +125,73 @@ import { Icon } from 'astro-icon/components'
                 欢迎通过 GitHub 创建 Issue 与我交流。请在 Issue
                 中清晰注明你的意图、反馈或合作想法，我会定期查阅并回复。
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BRAND STORY & METAPHOR ==================== -->
+    <section class="card bg-base-100 border border-base-content/10 shadow-sm overflow-hidden">
+      <div class="card-body p-6 sm:p-10 space-y-6">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+              <Icon name="ion:leaf-outline" class="h-4 w-4" />
+              <span>Brand Metaphor & Origin</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              为什么叫 Swift？—— 雨燕的隐喻
+            </h2>
+          </div>
+          <span class="badge badge-outline badge-sm text-xs font-medium opacity-80">
+            Apodidae · 纯粹速度与轻量
+          </span>
+        </div>
+
+        <p class="text-sm sm:text-base text-base-content/75 leading-relaxed">
+          自然界中的<strong class="text-base-content">雨燕（Swift）</strong>
+          是地球上水平飞行速度最快的鸟类之一，冲刺时速可超 110
+          公里。它们体态极轻、骨骼致密，一生绝大部分时间都在天际自由穿梭，毫无冗余负担。这正是本项目命名的核心隐喻：
+          <strong>
+            摒弃庞大迟钝的重型框架运行时，保留最轻巧灵活的架构骨架，赋能开发者享受如雨燕般极速、轻盈与无拘无束的
+            Web 创造体验。
+          </strong>
+        </p>
+
+        <!-- Image Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+          <div class="group relative overflow-hidden rounded-2xl border border-base-content/10 bg-base-200/50 shadow-sm">
+            <div class="overflow-hidden aspect-3/2">
+              <Image
+                src={swift01}
+                alt="Swift Bird in Sky - 雨燕在天空中翱翔"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div class="p-4 bg-base-100/90 backdrop-blur-sm border-t border-base-content/5 flex items-center justify-between text-xs">
+              <span class="font-medium text-base-content/80 flex items-center gap-1.5">
+                <Icon name="ion:airplane-outline" class="h-3.5 w-3.5 text-primary" />
+                展翼翱翔 · 极速突破
+              </span>
+              <span class="text-base-content/50 font-mono">Apodidae 01</span>
+            </div>
+          </div>
+
+          <div class="group relative overflow-hidden rounded-2xl border border-base-content/10 bg-base-200/50 shadow-sm">
+            <div class="overflow-hidden aspect-3/2">
+              <Image
+                src={swift02}
+                alt="Swift Bird in Nature - 自然界的雨燕"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div class="p-4 bg-base-100/90 backdrop-blur-sm border-t border-base-content/5 flex items-center justify-between text-xs">
+              <span class="font-medium text-base-content/80 flex items-center gap-1.5">
+                <Icon name="ion:flash-outline" class="h-3.5 w-3.5 text-warning" />
+                轻巧矫健 · 自由敏捷
+              </span>
+              <span class="text-base-content/50 font-mono">Apodidae 02</span>
             </div>
           </div>
         </div>

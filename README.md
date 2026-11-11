@@ -104,3 +104,4 @@ src/
   - 书写 AGENTS.md 文件
   - 添加 daisyui、alpinejs、astro对应的 skill 和 mcp，以及其他常用的skill和mcp
 - 网络请求封装成组件
+  其实认为网络请求可以封装成一个js的逻辑组件，因为请求数据，从url开始要经历加载中，成功和失败三种状态，然后成功后到数据，我忍可以封装成 alpine.data 这种的形式

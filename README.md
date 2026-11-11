@@ -99,9 +99,8 @@ src/
 
 ## todo list
 
-- 添加 wrangler 的配置
+- 添加 wrangler 的配置，部署到 cf 上
 - 添加 ai 工具
   - 书写 AGENTS.md 文件
   - 添加 daisyui、alpinejs、astro对应的 skill 和 mcp，以及其他常用的skill和mcp
 - 网络请求封装成组件
-- 添加 icons 和 images 例子图片

@@ -116,7 +116,7 @@ import swiftLogo from '../images/swift-logo.png'
           <Icon name="ion:rocket-outline" class="h-5 w-5" />
           立即开始
         </a>
-        <a href="#interactive-demo" class="btn btn-outline rounded-xl px-6">
+        <a href="/demo" class="btn btn-outline rounded-xl px-6">
           <Icon name="ion:play-circle-outline" class="h-5 w-5" />
           查看交互演示
         </a>
@@ -257,147 +257,22 @@ import swiftLogo from '../images/swift-logo.png'
       </div>
     </section>
 
-    <!-- ==================== INTERACTIVE SHOWCASE ==================== -->
-    <section id="interactive-demo" class="space-y-8 scroll-mt-24">
-      <div class="text-center space-y-3 max-w-2xl mx-auto">
-        <h2 class="text-3xl font-bold tracking-tight">交互体验实验室</h2>
-        <p class="text-base-content/70">
-          亲手体验脚手架中开箱即用的 Alpine.js 响应式能力与 DaisyUI 交互表现。
+    <!-- ==================== INTERACTIVE PLAYGROUND TEASER ==================== -->
+    <section class="rounded-3xl border border-base-content/10 bg-base-200/40 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+          <Icon name="ion:flask-outline" class="h-4 w-4" />
+          <span>Interactive Playground</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">探索 Alpine.js 交互实验室</h2>
+        <p class="text-sm text-base-content/70 max-w-xl">
+          体验开箱即用的全局 Toast 队列、表单掩码、状态绑定、模态弹窗与 $api 网络请求实战范例。
         </p>
       </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Interactive Card 1: Toasts -->
-        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
-          <div class="card-body space-y-3">
-            <h3 class="card-title text-base font-bold flex items-center gap-2">
-              <Icon name="ion:chatbox-ellipses-outline" class="h-5 w-5 text-primary" />
-              全局消息状态 ($store.toasts)
-            </h3>
-            <p class="text-xs text-base-content/70">
-              调用全局注册的 Alpine store，自动入队并支持多类型展示：
-            </p>
-            <div class="grid grid-cols-2 gap-2 pt-2" x-data>
-              <button
-                class="btn btn-success btn-sm w-full"
-                @click="$store.toasts.success('操作成功！数据已更新。')"
-              >
-                成功通知
-              </button>
-              <button
-                class="btn btn-error btn-sm w-full"
-                @click="$store.toasts.error('操作失败，网络连接异常！')"
-              >
-                失败提示
-              </button>
-              <button
-                class="btn btn-warning btn-sm w-full"
-                @click="$store.toasts.warning('请注意，此操作不可撤销！')"
-              >
-                警告消息
-              </button>
-              <button
-                class="btn btn-info btn-sm w-full"
-                @click="$store.toasts.info('新版本 v0.0.1 已经就绪。')"
-              >
-                普通信息
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive Card 2: Reactive State -->
-        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
-          <div class="card-body space-y-3" x-data="{ count: 10, max: 20 }">
-            <h3 class="card-title text-base font-bold flex items-center gap-2">
-              <Icon name="ion:calculator-outline" class="h-5 w-5 text-warning" />
-              响应式状态与进度绑定
-            </h3>
-            <p class="text-xs text-base-content/70">
-              内联 <code class="text-xs bg-base-200 px-1 rounded">x-data</code>{' '}
-              驱动，数据变更毫秒级同步：
-            </p>
-            <div class="space-y-3 pt-2">
-              <div class="flex items-center justify-between">
-                <span class="text-sm font-medium">当前数值:</span>
-                <span class="badge badge-primary font-mono text-base font-bold" x-text="count">
-                  10
-                </span>
-              </div>
-              <progress
-                class="progress progress-primary w-full"
-                :value="count"
-                :max="max"
-              ></progress>
-              <div class="flex items-center gap-2">
-                <button
-                  class="btn btn-sm btn-outline flex-1"
-                  @click="count = Math.max(0, count - 1)"
-                  :disabled="count <= 0"
-                >
-                  -1
-                </button>
-                <button
-                  class="btn btn-sm btn-outline flex-1"
-                  @click="count = Math.min(max, count + 1)"
-                  :disabled="count >= max"
-                >
-                  +1
-                </button>
-                <button
-                  class="btn btn-sm btn-ghost"
-                  @click="count = Math.floor(Math.random() * max)"
-                >
-                  随机
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive Card 3: Form Masking -->
-        <div class="card bg-base-100 border border-base-content/10 shadow-sm">
-          <div
-            class="card-body space-y-3"
-            x-data="{
-              dateVal: '',
-              cardVal: ''
-            }"
-          >
-            <h3 class="card-title text-base font-bold flex items-center gap-2">
-              <Icon name="ion:shield-checkmark-outline" class="h-5 w-5 text-secondary" />
-              输入掩码 (@alpinejs/mask)
-            </h3>
-            <p class="text-xs text-base-content/70">自动格式化日期与银行卡号等规则输入：</p>
-            <div class="space-y-3 pt-1">
-              <div>
-                <label class="label py-1">
-                  <span class="label-text text-xs">日期输入掩码 (MM/DD/YYYY)</span>
-                </label>
-                <input
-                  type="text"
-                  x-mask="99/99/9999"
-                  x-model="dateVal"
-                  placeholder="12/31/2026"
-                  class="input input-bordered input-sm w-full font-mono"
-                />
-              </div>
-              <div>
-                <label class="label py-1">
-                  <span class="label-text text-xs">卡号输入掩码</span>
-                </label>
-                <input
-                  type="text"
-                  x-mask="9999 9999 9999 9999"
-                  x-model="cardVal"
-                  placeholder="4242 4242 4242 4242"
-                  class="input input-bordered input-sm w-full font-mono"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <a href="/demo" class="btn btn-primary rounded-xl px-6 shrink-0 shadow-sm gap-2">
+        <span>进入交互实验室</span>
+        <Icon name="ion:arrow-forward-outline" class="h-4 w-4" />
+      </a>
     </section>
 
     <!-- ==================== QUICK START SECTION ==================== -->

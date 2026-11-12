@@ -26,6 +26,7 @@ pnpm dev
 
 - 简单交互：直接使用 HTML 内联 Alpine 指令。
 - 复杂交互：使用 Alpine.data() 抽离逻辑。
+- 公用工具等使用 Alpine.magic 注册。
 
 2. 全局状态
 
@@ -99,9 +100,7 @@ src/
 
 ## todo list
 
-- 添加 wrangler 的配置，部署到 cf 上
+- 部署到 cf 上、添加 wrangler 配置和环境变量
 - 添加 ai 工具
   - 书写 AGENTS.md 文件
-  - 添加 daisyui、alpinejs、astro对应的 skill 和 mcp，以及其他常用的skill和mcp
-- 网络请求封装成组件
-  其实认为网络请求可以封装成一个js的逻辑组件，因为请求数据，从url开始要经历加载中，成功和失败三种状态，然后成功后到数据，我忍可以封装成 alpine.data 这种的形式
+  - 添加 daisyui、alpinejs、astro对应的 skill 和 mcp，以及其他常用的 skill 和 mcp

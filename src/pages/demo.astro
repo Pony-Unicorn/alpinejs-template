@@ -1,0 +1,360 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Icon } from 'astro-icon/components'
+---
+
+<Layout
+  title="交互实验室 - Swift (Astro + Alpine.js)"
+  description="体验 Swift 脚手架开箱即用的 Alpine.js 交互范例：全局 Toast 消息通知、响应式状态绑定、表单掩码、全局 $api 网络请求与弹窗控制。"
+>
+  <div class="space-y-12 py-4 max-w-6xl mx-auto">
+    <!-- Header Banner -->
+    <section class="text-center space-y-4 pt-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold">
+        <Icon name="ion:flask-outline" class="h-4 w-4" />
+        <span>Playground & Interactive Lab</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Alpine.js 交互实验室</h1>
+      <p class="text-base-content/75 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        告别重型 SPA
+        框架，用几行声明式指令实现高效、轻巧的客户端动态交互。这里的每一个示例均可直接复制使用。
+      </p>
+    </section>
+
+    <!-- Info Alert -->
+    <div class="alert alert-neutral border border-base-content/10 shadow-sm rounded-2xl">
+      <Icon name="ion:information-circle-outline" class="h-6 w-6 text-primary shrink-0" />
+      <div class="text-xs sm:text-sm">
+        <h4 class="font-bold">开发指引与规范说明</h4>
+        <p class="text-base-content/75 mt-0.5">
+          所有交互均遵循脚手架规范：局部状态使用{' '}
+          <code class="bg-base-200 px-1 py-0.5 rounded">x-data</code>，跨组件状态使用{' '}
+          <code class="bg-base-200 px-1 py-0.5 rounded">$store</code>，网络请求通过{' '}
+          <code class="bg-base-200 px-1 py-0.5 rounded">$api</code>，复杂逻辑建议沉淀在{' '}
+          <code class="bg-base-200 px-1 py-0.5 rounded">src/scripts/</code>。
+        </p>
+      </div>
+    </div>
+
+    <!-- Interactive Grid (2x2 or 2x3) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Card 1: Toasts -->
+      <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+        <div class="card-body space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:chatbox-ellipses-outline" class="h-5 w-5 text-primary" />
+              全局消息状态 ($store.toasts)
+            </h3>
+            <span class="badge badge-neutral badge-xs">Alpine.store</span>
+          </div>
+          <p class="text-xs text-base-content/70">
+            开箱即用的全局消息通知队列，支持多层叠堆与自动定时退出动画：
+          </p>
+          <div class="grid grid-cols-2 gap-2 pt-2" x-data>
+            <button
+              class="btn btn-success btn-sm w-full"
+              @click="$store.toasts.success('操作成功！数据已更新。')"
+            >
+              成功通知 (Success)
+            </button>
+            <button
+              class="btn btn-error btn-sm w-full"
+              @click="$store.toasts.error('操作失败，网络连接异常！')"
+            >
+              失败提示 (Error)
+            </button>
+            <button
+              class="btn btn-warning btn-sm w-full"
+              @click="$store.toasts.warning('请注意，此操作不可撤销！')"
+            >
+              警告消息 (Warning)
+            </button>
+            <button
+              class="btn btn-info btn-sm w-full"
+              @click="$store.toasts.info('新版本就绪，欢迎体验。')"
+            >
+              普通信息 (Info)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Reactive State -->
+      <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+        <div class="card-body space-y-3" x-data="{ count: 10, max: 20 }">
+          <div class="flex items-center justify-between">
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:calculator-outline" class="h-5 w-5 text-warning" />
+              响应式状态与进度绑定
+            </h3>
+            <span class="badge badge-neutral badge-xs">x-data</span>
+          </div>
+          <p class="text-xs text-base-content/70">
+            简单内联状态驱动，数值变化与 DaisyUI Progress 进度条毫秒级联动：
+          </p>
+          <div class="space-y-3 pt-2">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium">当前数值:</span>
+              <span class="badge badge-primary font-mono text-base font-bold" x-text="count">
+                10
+              </span>
+            </div>
+            <progress class="progress progress-primary w-full" :value="count" :max="max"></progress>
+            <div class="flex items-center gap-2">
+              <button
+                class="btn btn-sm btn-outline flex-1"
+                @click="count = Math.max(0, count - 1)"
+                :disabled="count <= 0"
+              >
+                -1
+              </button>
+              <button
+                class="btn btn-sm btn-outline flex-1"
+                @click="count = Math.min(max, count + 1)"
+                :disabled="count >= max"
+              >
+                +1
+              </button>
+              <button class="btn btn-sm btn-ghost" @click="count = Math.floor(Math.random() * max)">
+                随机数
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Form Masking -->
+      <div class="card bg-base-100 border border-base-content/10 shadow-sm">
+        <div
+          class="card-body space-y-3"
+          x-data="{
+            dateVal: '',
+            cardVal: ''
+          }"
+        >
+          <div class="flex items-center justify-between">
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:shield-checkmark-outline" class="h-5 w-5 text-secondary" />
+              输入掩码 (@alpinejs/mask)
+            </h3>
+            <span class="badge badge-neutral badge-xs">Alpine Plugin</span>
+          </div>
+          <p class="text-xs text-base-content/70">
+            内置已注册的官方 Mask 插件，自动格式化日期与银行卡号等规则输入：
+          </p>
+          <div class="space-y-3 pt-1">
+            <div>
+              <label class="label py-1">
+                <span class="label-text text-xs">日期输入掩码 (MM/DD/YYYY)</span>
+              </label>
+              <input
+                type="text"
+                x-mask="99/99/9999"
+                x-model="dateVal"
+                placeholder="12/31/2026"
+                class="input input-bordered input-sm w-full font-mono"
+              />
+            </div>
+            <div>
+              <label class="label py-1">
+                <span class="label-text text-xs">卡号输入掩码 (每4位空格分隔)</span>
+              </label>
+              <input
+                type="text"
+                x-mask="9999 9999 9999 9999"
+                x-model="cardVal"
+                placeholder="4242 4242 4242 4242"
+                class="input input-bordered input-sm w-full font-mono"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: $api Magic Property -->
+      <div
+        class="card bg-base-100 border border-base-content/10 shadow-sm"
+        x-data="{
+          users: null,
+          loading: false,
+          async loadUsers() {
+            this.loading = true
+            try {
+              this.users = await this.$api('users', { searchParams: { _limit: 3 } }).json()
+            } catch (err) {
+              $store.toasts.error(err.message || '请求失败')
+            } finally {
+              this.loading = false
+            }
+          }
+        }"
+      >
+        <div class="card-body space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:cloud-download-outline" class="h-5 w-5 text-accent" />
+              网络请求接口 ($api)
+            </h3>
+            <span class="badge badge-neutral badge-xs">Alpine.magic</span>
+          </div>
+          <p class="text-xs text-base-content/70">
+            通过 <code class="text-xs bg-base-200 px-1 rounded">Alpine.magic</code>{' '}
+            全局注册，内联直接调用 ky 实例，无需任何 import：
+          </p>
+          <div class="space-y-2 pt-1">
+            <div class="flex items-center gap-2">
+              <button
+                class="btn btn-primary btn-sm flex-1 gap-1.5"
+                :disabled="loading"
+                @click="loadUsers()"
+              >
+                <span x-show="loading" class="loading loading-spinner loading-xs" x-cloak></span>
+                <span x-text="users ? '重新调用 ($api)' : '发起请求 ($api)'"></span>
+              </button>
+              <button class="btn btn-ghost btn-sm" x-show="users" @click="users = null" x-cloak>
+                清空
+              </button>
+            </div>
+
+            <!-- 状态展示区 -->
+            <div class="min-h-20 rounded-lg bg-base-200/50 p-2 text-xs flex items-center justify-center border border-base-content/5">
+              <template x-if="loading">
+                <span class="flex items-center gap-2 text-primary font-medium">
+                  <span class="loading loading-spinner loading-xs"></span>
+                  正在通过 $api 从 JSONPlaceholder 获取数据...
+                </span>
+              </template>
+              <template x-if="!loading && !users">
+                <span class="text-base-content/50">
+                  点击上方按钮体验在内联 HTML 中直接使用 $api
+                </span>
+              </template>
+              <template x-if="!loading && users">
+                <ul class="w-full space-y-1.5">
+                  <template x-for="user in users" :key="user.id">
+                    <li class="flex items-center justify-between text-base-content/90 font-mono text-xs bg-base-100 px-2 py-1 rounded border border-base-content/5">
+                      <span class="font-semibold" x-text="user.name"></span>
+                      <span class="badge badge-xs badge-neutral" x-text="user.email"></span>
+                    </li>
+                  </template>
+                </ul>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Native HTML5 Dialog (DaisyUI Recommended) -->
+      <div class="card bg-base-100 border border-base-content/10 shadow-sm" x-data>
+        <div class="card-body space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:browsers-outline" class="h-5 w-5 text-secondary" />
+              原生 Dialog 弹窗 (DaisyUI 官方推荐)
+            </h3>
+            <span class="badge badge-neutral badge-xs">&lt;dialog&gt;</span>
+          </div>
+          <p class="text-xs text-base-content/70">
+            基于 HTML5 原生
+            <code class="text-xs bg-base-200 px-1 py-0.5 rounded">&lt;dialog&gt;</code> 与{' '}
+            <code class="text-xs bg-base-200 px-1 py-0.5 rounded">showModal()</code>，享顶级 A11y
+            焦点锁定与 ESC 原生支持：
+          </p>
+          <div class="pt-2">
+            <button class="btn btn-outline btn-sm gap-2" @click="$refs.demoModal.showModal()">
+              <Icon name="ion:open-outline" class="h-4 w-4" />
+              打开原生 Dialog 弹窗
+            </button>
+          </div>
+
+          <!-- DaisyUI 官方推荐原生结构 -->
+          <dialog x-ref="demoModal" class="modal">
+            <div class="modal-box">
+              <h3 class="font-bold text-lg">DaisyUI 原生 HTML5 弹窗</h3>
+              <p class="py-4 text-sm text-base-content/75 leading-relaxed">
+                无需声明布尔状态变量，直接调用原生的{' '}
+                <code class="text-xs bg-base-200 px-1 py-0.5 rounded">.showModal()</code>{' '}
+                即可激活顶层 Top Layer，自带焦点陷阱（Focus Trap）与键盘 ESC 关闭。
+              </p>
+              <div class="modal-action">
+                <form method="dialog">
+                  <!-- 原生 form method="dialog" 提交时自动关闭弹窗 -->
+                  <button class="btn btn-sm btn-ghost">取消</button>
+                  <button
+                    class="btn btn-sm btn-primary"
+                    @click="$store.toasts.success('操作已确认！')"
+                  >
+                    确定提交
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- 点击外部背景遮罩原生关闭 -->
+            <form method="dialog" class="modal-backdrop">
+              <button>close</button>
+            </form>
+          </dialog>
+        </div>
+      </div>
+
+      <!-- Card 6: Tabs / Accordion -->
+      <div
+        class="card bg-base-100 border border-base-content/10 shadow-sm"
+        x-data="{ currentTab: 1 }"
+      >
+        <div class="card-body space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="card-title text-base font-bold flex items-center gap-2">
+              <Icon name="ion:layers-outline" class="h-5 w-5 text-info" />
+              标签页切换 (Tabs)
+            </h3>
+            <span class="badge badge-neutral badge-xs">Tabs Pattern</span>
+          </div>
+          <p class="text-xs text-base-content/70">用一行状态驱动多 Tab 互斥切换展示：</p>
+          <div class="space-y-3 pt-1">
+            <div role="tablist" class="tabs tabs-boxed">
+              <a
+                role="tab"
+                class="tab text-xs"
+                :class="{ 'tab-active': currentTab === 1 }"
+                @click="currentTab = 1"
+              >
+                架构理念
+              </a>
+              <a
+                role="tab"
+                class="tab text-xs"
+                :class="{ 'tab-active': currentTab === 2 }"
+                @click="currentTab = 2"
+              >
+                性能数据
+              </a>
+              <a
+                role="tab"
+                class="tab text-xs"
+                :class="{ 'tab-active': currentTab === 3 }"
+                @click="currentTab = 3"
+              >
+                开发者体验
+              </a>
+            </div>
+
+            <div class="p-3 bg-base-200/50 rounded-xl text-xs text-base-content/80 min-h-16 flex items-center">
+              <div x-show="currentTab === 1" x-transition>
+                ⚡ <strong>极致静态</strong>：Astro 负责 95% 的页面骨架，Alpine 负责 5% 的关键交互。
+              </div>
+              <div x-show="currentTab === 2" x-transition x-cloak>
+                🚀 <strong>百点灯塔</strong>：轻量客户端体积（仅 ~15KB），毫秒级首屏加载。
+              </div>
+              <div x-show="currentTab === 3" x-transition x-cloak>
+                ❤️ <strong>开箱即用</strong>：无需配置复杂打包管线，所写即所得。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

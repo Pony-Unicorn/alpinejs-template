@@ -3,7 +3,7 @@
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  */
 {
-  "name": "swift",
+  "name": "alpinejs-template",
   "compatibility_date": "2026-11-10",
   "assets": {
     // The path to the directory containing the `index.html` file to be served at `/`

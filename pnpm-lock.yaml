@@ -32,6 +32,9 @@ importers:
       daisyui:
         specifier: ^5.7.50
         version: 5.7.50
+      dayjs:
+        specifier: ^1.11.23
+        version: 1.11.23
       ky:
         specifier: ^2.2.0
         version: 2.2.0
@@ -965,6 +968,9 @@ packages:
 
   daisyui@5.7.50:
     resolution: {integrity: sha512-+/LRqnTCoc7s/bJEKKwtJSwzeXCVdAmRdNmZeZzgHCaQ9PJyl7j+2V2U32GQDMyD+VDkP9e/+JGoC72Y1hLk7w==}
+
+  dayjs@1.11.23:
+    resolution: {integrity: sha512-QDTCU0M0MxR3hQfnlDJfwekQiaanm1ubOD231u73WBckQ/fsamwRLiE2GBz6D3a/xF1NgfiDLJjXBa1hYOYTtQ==}
 
   defu@6.1.7:
     resolution: {integrity: sha512-7z22QmUWiQ/2d0KkdYmANbRUVABpZ9SNYyH5vx6PZ+nE5bcC0l7uFvEfHlyld/HcGBFTL536ClDt3DEcSlEJAQ==}
@@ -2509,6 +2515,8 @@ snapshots:
       css-tree: 2.2.1
 
   daisyui@5.7.50: {}
+
+  dayjs@1.11.23: {}
 
   defu@6.1.7: {}
 

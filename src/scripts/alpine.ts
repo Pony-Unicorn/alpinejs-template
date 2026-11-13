@@ -4,6 +4,7 @@ import mask from '@alpinejs/mask'
 
 import toasts from './components/toaster'
 import { api } from './lib/api'
+import { utils } from './lib/utils'
 
 export default (Alpine: Alpine) => {
   Alpine.plugin(mask)
@@ -11,4 +12,5 @@ export default (Alpine: Alpine) => {
   Alpine.store('toasts', toasts)
 
   Alpine.magic('api', () => api)
+  Alpine.magic('utils', () => utils)
 }

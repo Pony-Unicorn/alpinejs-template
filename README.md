@@ -102,4 +102,4 @@ src/
 
 - 添加 ai 工具
   - 书写 AGENTS.md 文件
-  - 添加 daisyui、alpinejs、astro对应的 skill 和 mcp，以及其他常用的 skill 和 mcp
+  - 添加对应的 skill 和 mcp：astro、alpinejs、daisyui

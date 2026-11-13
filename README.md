@@ -126,6 +126,14 @@ src/
 
 ---
 
-## 📋 todo list
+### Recommend MCP
 
-- 添加对应的 skill 和 mcp：astro、alpinejs、daisyui
+**必须安装**
+
+- Context7: 实时获取文档 https://github.com/upstash/context7
+- exa: 联网搜索与网页内容阅读 https://exa.ai/docs/reference/exa-mcp
+- grep: 查询公共 GitHub https://vercel.com/blog/grep-a-million-github-repositories-via-mcp
+
+---
+
+## 📋 todo list

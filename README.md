@@ -128,6 +128,4 @@ src/
 
 ## 📋 todo list
 
-- 添加 ai 工具
-  - 书写 AGENTS.md 文件
-  - 添加对应的 skill 和 mcp：astro、alpinejs、daisyui
+- 添加对应的 skill 和 mcp：astro、alpinejs、daisyui

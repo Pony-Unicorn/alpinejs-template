@@ -100,7 +100,6 @@ src/
 
 ## todo list
 
-- 部署到 cf 上、添加 wrangler 配置和环境变量
 - 添加 ai 工具
   - 书写 AGENTS.md 文件
   - 添加 daisyui、alpinejs、astro对应的 skill 和 mcp，以及其他常用的 skill 和 mcp

@@ -2,3 +2,23 @@
 @plugin 'daisyui' {
   themes: coffee --default;
 }
+
+/* 防止 Alpine.js 初始化前元素闪烁 */
+[x-cloak] {
+  display: none !important;
+}
+
+/* 全局图片渲染性能优化 (https://css-tricks.com/almanac/properties/c/content-visibility/) */
+img {
+  content-visibility: auto;
+}
+
+/* 原生弹窗防背景穿透滚动 (Scroll Containment) */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}

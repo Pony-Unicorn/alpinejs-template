@@ -38,6 +38,15 @@ pnpm format:fix
 
 > 💡 启动服务后，欢迎访问 **`http://localhost:4321/demo`** 查看内置的交互实验室（已预置全局 Toast、输入掩码、ky API 客户端、HTML5 原生 Dialog 弹窗等实用范例）。
 
+### 3. 依赖更新与维护
+
+```bash
+pnpm outdated             # 查看过时的依赖
+pnpm up                   # 升级到 semver 范围内的最新版本
+pnpm up -L [package]      # 将指定依赖升级到最新版本（忽略 semver）
+pnpm up -L --interactive  # 交互式选择升级依赖
+```
+
 ---
 
 ## 🛠️ 开发规范

@@ -15,7 +15,7 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(@types/alpinejs@3.17.0)(alpinejs@3.17.5)
       '@astrojs/sitemap':
-        specifier: ^3.7.5
+        specifier: ^3.7.4
         version: 3.7.5
       '@tailwindcss/vite':
         specifier: ^4.3.5
@@ -24,7 +24,7 @@ importers:
         specifier: ^3.17.5
         version: 3.17.5
       astro:
-        specifier: ^7.4.12
+        specifier: ^7.4.7
         version: 7.4.12(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1)
       astro-seo:
         specifier: ^1.2.0

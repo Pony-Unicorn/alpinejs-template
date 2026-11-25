@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
+import pkg from '../../package.json'
 import swiftLogo from '../images/swift-logo.png'
 const currentYear = new Date().getFullYear()
 ---
@@ -110,7 +111,10 @@ const currentYear = new Date().getFullYear()
 
     <!-- Divider & Bottom Bar -->
     <div class="border-t border-base-content/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-base-content/60">
-      <p>© {currentYear} Pony-Unicorn / Swift Template. MIT License.</p>
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <p>© {currentYear} Pony-Unicorn / Swift Template. MIT License.</p>
+        <span class="badge badge-xs badge-outline font-mono opacity-80">v{pkg.version}</span>
+      </div>
       <p class="flex items-center gap-1">
         Built with <Icon name="ion:heart" class="h-3.5 w-3.5 text-error inline" /> Astro + Alpine.js
       </p>
